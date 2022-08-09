@@ -48,32 +48,69 @@ const drawCircles = (n)=>{
 
 //Creating animation
 
-let x = 300
-let dx = 5
+let x = Math.random() * innerWidth
+let dx = (Math.random() - 0.5) * 10
 
-let y = 300
-let dy = 5
+let y = Math.random() * innerHeight
+let dy = (Math.random() - 0.5) * 10
 
 const radius = 30
+
+
+
+function Circle(x,y,dx,dy,radius){
+    this.x = x
+    this.y = y
+    this.dx = dx
+    this.dy = dy
+    this.radius = radius
+
+    this.draw = ()=>{
+        ctx.beginPath()
+        ctx.arc(this.x,this.y,this.radius,Math.PI * 2,0,false)
+        ctx.strokeStyle = "blue"
+        ctx.stroke()
+
+    }
+
+    this.update = ()=>{
+        if(this.x + this.radius > innerWidth || this.x -this.radius < 0     ){
+            this.dx = -this.dx
+        }
+    
+        if(this.y + this.radius > innerHeight || this.y - this.radius < 0     ){
+            this.dy = -this.dy
+        }
+    
+        this.x += this.dx
+        this.y += this.dy
+        this.draw()
+    }
+
+}
+
+const circle = new Circle(200,200,5,5,30)
+
 const animate = ()=>{
     requestAnimationFrame(animate)
     ctx.clearRect(0,0,innerWidth,innerHeight )
 
-    ctx.beginPath()
-    ctx.arc(x,y,radius,Math.PI * 2,0,false)
-    ctx.strokeStyle = "blue"
-    ctx.stroke()
+    // ctx.beginPath()
+    // ctx.arc(x,y,radius,Math.PI * 2,0,false)
+    // ctx.strokeStyle = "blue"
+    // ctx.stroke()
 
-    if(x + radius > innerWidth || x -radius < 0     ){
-        dx = -dx
-    }
+    // if(x + radius > innerWidth || x -radius < 0     ){
+    //     dx = -dx
+    // }
 
-    if(y + radius > innerHeight || y - radius < 0     ){
-        dy = -dy
-    }
+    // if(y + radius > innerHeight || y - radius < 0     ){
+    //     dy = -dy
+    // }
 
-    x += dx
-    y += dy
+    // x += dx
+    // y += dy
+    circle.update()
 }
 
 animate()
