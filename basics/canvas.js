@@ -18,9 +18,9 @@ ctx.stroke()
 ctx.beginPath()
 
 //Drawing arcs/Cirlces
-ctx.arc(300,300,50,Math.PI * 2,0,false)
-ctx.strokeStyle = "blue"
-ctx.stroke()
+// ctx.arc(300,300,50,Math.PI * 2,0,false)
+// ctx.strokeStyle = "blue"
+// ctx.stroke()
 
 //Creating circls Randomly
 
@@ -44,4 +44,36 @@ const drawCircles = (n)=>{
     }
 }
 
-drawCircles(100)
+// drawCircles(100)
+
+//Creating animation
+
+let x = 300
+let dx = 5
+
+let y = 300
+let dy = 5
+
+const radius = 30
+const animate = ()=>{
+    requestAnimationFrame(animate)
+    ctx.clearRect(0,0,innerWidth,innerHeight )
+
+    ctx.beginPath()
+    ctx.arc(x,y,radius,Math.PI * 2,0,false)
+    ctx.strokeStyle = "blue"
+    ctx.stroke()
+
+    if(x + radius > innerWidth || x -radius < 0     ){
+        dx = -dx
+    }
+
+    if(y + radius > innerHeight || y - radius < 0     ){
+        dy = -dy
+    }
+
+    x += dx
+    y += dy
+}
+
+animate()
