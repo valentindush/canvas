@@ -32,9 +32,14 @@ const drawCircles = (n)=>{
         const x = Math.random() * window.innerWidth
         const y = Math.random() * window.innerWidth
         ctx.beginPath()
+        //colors
 
-        ctx.arc(x,y,50,Math.PI * 2,0,false)
-        ctx.strokeStyle = "blue"
+        const red = Math.random() * 255
+        const blue = Math.random() * 255
+        const green = Math.random() * 255
+
+        ctx.arc(x,y,Math.random() * 40,Math.PI * 2,0,false)
+        ctx.strokeStyle = `rgb(${red},${green},${blue})`
         ctx.stroke()
     }
 }
