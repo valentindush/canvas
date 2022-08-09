@@ -48,14 +48,6 @@ const drawCircles = (n)=>{
 
 //Creating animation
 
-let x = Math.random() * innerWidth
-let dx = (Math.random() - 0.5) * 10
-
-let y = Math.random() * innerHeight
-let dy = (Math.random() - 0.5) * 10
-
-const radius = 30
-
 
 
 function Circle(x,y,dx,dy,radius){
