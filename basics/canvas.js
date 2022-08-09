@@ -91,26 +91,26 @@ function Circle(x,y,dx,dy,radius){
 
 const circle = new Circle(200,200,5,5,30)
 
+let circles = []
+
+for(let i = 0; i <= 500; i++ ){
+    let x = Math.random() * innerWidth
+    let y = Math.random() * innerHeight
+    let dx = (Math.random() - 0.5)*3
+    let dy = (Math.random() - 0.5)*3
+
+    let radius = 10
+    circles.push(new Circle(x,y,dx,dy,radius))
+
+}
+
 const animate = ()=>{
     requestAnimationFrame(animate)
     ctx.clearRect(0,0,innerWidth,innerHeight )
 
-    // ctx.beginPath()
-    // ctx.arc(x,y,radius,Math.PI * 2,0,false)
-    // ctx.strokeStyle = "blue"
-    // ctx.stroke()
-
-    // if(x + radius > innerWidth || x -radius < 0     ){
-    //     dx = -dx
-    // }
-
-    // if(y + radius > innerHeight || y - radius < 0     ){
-    //     dy = -dy
-    // }
-
-    // x += dx
-    // y += dy
-    circle.update()
+    circles.forEach((circle)=>{
+        circle.update()
+    })
 }
 
 animate()
